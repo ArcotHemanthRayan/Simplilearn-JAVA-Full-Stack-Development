@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Budget Planner</title>
+    <link rel="stylesheet" href="budget.css" />
+  </head>
+  <body style="background-color: rgb(22, 175, 196);">
+    <div class="container">
+      <div class="header">
+        <h1 style="color: rgb(236, 234, 238); background-color: blueviolet;">Team Budget Planner Application</h1>
+      </div>
+      <h2 style="text-align: center; background-color: crimson;">Your Total Budget Available</h2>
+      <div class="budget-section">
+        <div class="budget col col-md col-sm">
+          <h2>Total Budget</h2>
+          <p class="amount">$ <span id="budgetAmount">0</span></p>
+        </div>
+        <div class="expenses col col-md col-sm">
+          <h2>Your Expenses</h2>
+          <p class="exp-amount">$ <span id="expensesAmount">0</span></p>
+        </div>
+        <div class="balance col col-md col-sm">
+          <h2>Remaining Balance</h2>
+          <p class="amount bala">$ <span id="balanceAmount">0</span></p>
+        </div>
+      </div>
+      <h2 style="text-align: center; background-color: crimson;">Total Expence Details</h2><br>
+
+      <div id="displayExpenses">
+        <div class="budget-list">
+          <div class="col">
+            <h4>Expence Name</h4>
+          </div>
+          <div class="col">
+            <h4>Expence Cost</h4>
+          </div>
+          <div class="col"></div>
+        </div>
+        <div id="expValue"></div>
+      </div>
+    </div>
+    <div class="toggle">
+      <button id="myBtn" type="button">Add Budget</button>
+    </div>
+
+    <div id="myModel" class="model">
+      <div class="model-content">
+        <div class="model-header">
+          <span class="close">&times;</span>
+          <h2>Enter Your Total Budget</h2>
+        </div>
+        <div class="model-body">
+          <div class="budget-form" id="budgetform">
+            <form id="addForm">
+              <label for=""> Enter Your Budget</label> <br />
+              <input type="number" id="number" /> <br />
+              <button type="submit">Add New Budget</button>
+            </form>
+          </div>
+
+          <div class="expense-form" id="expense-form">
+            <form action="" id="expForm">
+              <div class="">
+                <label for="">Enter Your Expense Name</label> <br />
+                <input type="text" id="expName" />
+              </div>
+              <div class="">
+                <label for="">Enter Your expense amount</label> <br />
+                <input type="number" id="expNumber" />
+              </div>
+              <button type="submit" id="submitExpen">Add expenses</button>
+            </form>
+            <button onclick="callBudget()" id="bug">
+              Add budget
+            </button>
+          </div>
+
+          <div class="edit-form" id="editForm">
+            <form action="" id="saveEdit">
+              <div class="">
+                <label for="">Edit your Expense</label> <br />
+                <input type="text" id="editExpName" />
+              </div>
+              <div class="">
+                <label for="">Edit Expense Amount</label> <br />
+                <input type="number" id="editExpNumber" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="budget.js"></script>
+  </body>
+</html>
