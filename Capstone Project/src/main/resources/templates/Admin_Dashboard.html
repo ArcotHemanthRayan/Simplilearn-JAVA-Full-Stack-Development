@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>The Food Box</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	<style>
+	body{
+	background-color:rgb(0, 128, 192);
+	}
+	
+	</style>
+</head>
+<body>
+	<br>
+	<br>
+	<h6 style="color:red;text-align:center" th:text="${action}"></h6>
+	<br>
+	<div class="container" style="text-align:left">
+	<h1>Welcome Admin</h1>
+		<a th:href="@{/changePassword}" class="btn btn-primary btn-sm mb-3">Change Your Password</a>
+		<a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3">Logout</a> 
+		<!-- <a th:href="@{/}" class="btn btn-primary btn-sm mb-3">Main Home Page</a> -->
+	</div>
+	<br>
+	<br>
+	<hr>
+	<br>
+	<br>
+	<div class="container" style="text-align:center">
+	<center><h2>Click Here To Change The Data</h2></center>
+		<a th:href="@{/manageProduct}" class="btn btn-primary btn-sm mb-3">Manage Products</a><br>
+		<a th:href="@{/manageCustomer}" class="btn btn-primary btn-sm mb-3">Manage Customers</a> <br>
+		<a th:href="@{/managePurchase}" class="btn btn-primary btn-sm mb-3">Manage Purchase</a>
+	</div>
+</body>
+</html>

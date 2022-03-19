@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Food Box</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<style>
+    body{
+    background-color:rgb(128, 128, 255);
+    }
+	img{
+	width: 200px;
+	height: 150px;
+	}
+	.containerSC {
+	position: absolute;
+	left: 58px;
+	top: 20px;
+	display: inline-block;
+	/* border: 2px solid red; */
+	}
+	.image{
+	  text-align:center;
+      width:200px;
+      margin-left:500px;
+	
+	}
+</style>
+<body>
+
+	<div class="container" style="text-align:right" th:if="${session.customerLogin == null}">
+		<a th:href="@{/register}" class="btn btn-primary btn-sm mb-3">Register</a>
+		<a th:href="@{/login}" class="btn btn-primary btn-sm mb-3">Customer Login</a> 
+		<a th:href="@{/adminLogin}" class="btn btn-primary btn-sm mb-3">Admin login</a>
+		<br>
+		<h4 style="color:rgb(0, 255, 64)">Login To Continue Order</h4>
+	</div>
+	<div class="container" style="text-align:right" th:if="${session.customerLogin != null}">
+		<div class="containerSC">
+			<form th:action="@{/searchHome}" method="POST">
+				<input type="text" name="keyword" Placeholder="Search Products">
+				<button type="submit" class="btn btn-primary btn-sm mb-3" style="margin-top:12px">Search Products</button>
+			</form>
+		</div>
+		<div th:if="${session.searchH != null}">
+			<a th:href="@{/goHome}" class="btn btn-primary btn-sm mb-3">Home</a>
+		</div>
+		<a th:href="@{/customerLogout}" class="btn btn-primary btn-sm mb-3">Logout</a><br>
+		<a th:href="@{/viewCart}" class="btn btn-primary btn-sm mb-3">View Cart</a><br>
+		<a th:href="@{/viewOrders/{email}(email=${session.customerLogin})}" class="btn btn-primary btn-sm mb-3">View Your Orders</a>
+	</div>
+	<div style="text-align:center">
+	</div>
+	<hr>
+	<div class="container">
+			<h5 th:text="${action}" style="color: red"></h5>
+		<center><h1 style="color:rgb(128, 0, 128)"><span> WELCOME TO THE </span><span> FOOD-BOX </span><span th:text="${session.custName}"></span></h1></center>
+		<br>
+		<h4 style="color:rgb(128,0,128); text-align:center">ORDER YOUR DELICIOUS FOOD FROM OUR FOOD BOX</h4>
+		<br>
+		<div class="row">
+
+			<div class="col" th:each="product : ${session.productList}" style="padding-bottom:15px">
+				<table border="1">
+					<tr>
+						<td colspan="2"><img th:src="@{/Images/food box 1.jpg}" alt="Image displayed here"></td>
+					</tr>
+					<tr>
+						<td>Name</td>
+						<td th:text="${product.name}"></td>
+					</tr>
+					<tr>
+						<td>Price</td>
+						<td th:text="${product.price}"></td>
+					</tr>
+					<tr>
+						<td>Category</td>
+						<td th:text="${product.category}"></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align:center"><a th:href="@{/addCart/{id}(id=${product.id})}"	class="btn btn-primary">Add to Cart</a></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+
+	</div>
+</body>
+</html>
